@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import Contacts from "./components/contacts/Contacts";
 import Phonebook from "./components/phonebook/Phonebook";
 import Section from "./components/section/Section";
-import FindContact from "./findContact/FindContact";
+import FindContact from "./components/findContact/FindContact";
 import { v4 as uuidv4 } from "uuid";
 
 class App extends Component {
@@ -40,21 +40,19 @@ class App extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-
     if (this.state.contacts !== prevState.contacts) {
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+      localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
     }
     console.log(this.state);
     console.log(prevState);
   }
 
-    componentDidMount() {
-    const contacts = localStorage.getItem('contacts');
+  componentDidMount() {
+    const contacts = localStorage.getItem("contacts");
     const parsedContacts = JSON.parse(contacts);
-      if (parsedContacts) {
-        this.setState({ contacts: parsedContacts });
-        
-      }
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
   }
 
   render() {
